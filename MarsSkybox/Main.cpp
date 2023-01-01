@@ -54,7 +54,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a GLFWwindow object of 800 by 800 pixels
-	GLFWwindow* window = glfwCreateWindow(width, height, "Earth Skybox", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, "Mars Skybox", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -90,7 +90,7 @@ int main()
 
 	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 	std::string parentDir = fs::current_path().string();
-	std::string modelPath = "/res/models/airplane/scene.gltf";
+	std::string modelPath = "/res/models/mars/scene.gltf";
 	
 	// Load the models
 	Model model((parentDir + modelPath).c_str());
@@ -115,12 +115,12 @@ int main()
 	// Directories of all the faces of the cubemap
 	std::string facesCubemap[6] =
 	{
-		parentDir + "/res/skybox/right.jpg",
-		parentDir + "/res/skybox/left.jpg",
-		parentDir + "/res/skybox/top.jpg",
-		parentDir + "/res/skybox/bottom.jpg",
-		parentDir + "/res/skybox/front.jpg",
-		parentDir + "/res/skybox/back.jpg"
+		parentDir + "/res/skybox-faces/right.jpg",
+		parentDir + "/res/skybox-faces/left.jpg",
+		parentDir + "/res/skybox-faces/top.jpg",
+		parentDir + "/res/skybox-faces/bottom.jpg",
+		parentDir + "/res/skybox-faces/front.jpg",
+		parentDir + "/res/skybox-faces/back.jpg"
 	};
 
 	// Create the cubemap texture object
@@ -161,9 +161,6 @@ int main()
 			stbi_image_free(data);
 		}
 	}
-
-	std::string newTitle = "Earth Sky box";
-	glfwSetWindowTitle(window, newTitle.c_str());
 
 	// Main loop
 	while (!glfwWindowShouldClose(window))
